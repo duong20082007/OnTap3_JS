@@ -18,8 +18,11 @@ const editIdInput = document.getElementById("editId");
 const totalBadge = document.getElementById("totalBadge");
 
 const renderProducts = (listToRender) => {
-    tBody.innerHTML = "";
-    
+    if (!listToRender) {
+        listToRender = products;
+    }
+
+    tBody.innerHTML = ""; 
     if (listToRender.length === 0) {
         document.getElementById("emptyState").style.display = "block";
     } else {
@@ -29,7 +32,7 @@ const renderProducts = (listToRender) => {
             tr.innerHTML = `
                 <td>${index + 1}</td>
                 <td class="td-name">${product.name}</td>
-                <td class="td-price">${product.price.toLocaleString()} ₫</td>
+                <td class="td-price">${product.price.toLocaleString()}</td>
                 <td class="center" style="font-weight: 700">${product.centre}</td>
                 <td>
                   <div class="td-actions">
