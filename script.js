@@ -17,13 +17,14 @@ const formTitle = document.getElementById("formTitle");
 const editIdInput = document.getElementById("editId");
 const totalBadge = document.getElementById("totalBadge");
 
-const renderProducts = (data = products) => {
+const renderProducts = (listToRender) => {
     tBody.innerHTML = "";
-    if (data.length === 0) {
+    
+    if (listToRender.length === 0) {
         document.getElementById("emptyState").style.display = "block";
     } else {
         document.getElementById("emptyState").style.display = "none";
-        data.forEach((product, index) => {
+        listToRender.forEach((product, index) => {
             let tr = document.createElement("tr");
             tr.innerHTML = `
                 <td>${index + 1}</td>
@@ -39,7 +40,7 @@ const renderProducts = (data = products) => {
             tBody.appendChild(tr);
         });
     }
-    totalBadge.innerText = `${data.length} sản phẩm`;
+    totalBadge.innerText = `${listToRender.length} sản phẩm`;
 };
 
 const saveData = () => {
